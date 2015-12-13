@@ -9,28 +9,33 @@
 import Foundation
 import UIKit
 
-protocol ColorCircular {
+protocol ColorCircular : class {
+    var borderWidth: CGFloat { get }
     var sectors: Int { get set }
     var radius: CGFloat { get set }
     
-    func drawRadial(context: CGContextRef, size: CGSize)
+    func calculateRadius(size: CGSize)
+    
+    func drawRadial(context: CGContext, size: CGSize)
 }
 
 
 extension ColorCircular {
-    func drawRadial(context: CGContextRef, size: CGSize) {
-        UIColor.whiteColor().setFill()
-        
-        UIRectFill(CGRect(x: 0, y: 0, width: size.width, height: size.height))
-        
+    func calculateRadius(size: CGSize) {
+        let minValue = min(size.width, size.height) / 2.0
+        self.radius = minValue - max(0.0, self.borderWidth)
+    }
+    
+    func drawRadial(context: CGContext, size: CGSize) {
         let angle: CGFloat = CGFloat(2.0 * M_PI) / CGFloat(sectors)
         
         var bezierPath: UIBezierPath?
         let center = CGPoint(x: size.width / 2, y: size.height / 2)
         
         for i in 0...self.sectors {
-            let startAngle = CGFloat(i) * angle
-            let endAngle = CGFloat(i + 1) * angle
+            let inserve = -i
+            let startAngle = CGFloat(inserve) * angle
+            let endAngle = CGFloat(inserve + 1) * angle
             bezierPath = UIBezierPath(arcCenter: center, radius: self.radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
             
             bezierPath?.addLineToPoint(center)
@@ -51,23 +56,52 @@ extension ColorCircular {
 
 @IBDesignable
 public class ColorWheel : UIView, ColorCircular {
-    let borderWidth: CGFloat = 2.0
-    public var sectors = 360
+    public let borderWidth: CGFloat = 2.0
+    public var sectors: Int = 360
     public var radius: CGFloat = 0
+    
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.setupColorWheelView()
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.setupColorWheelView()
+    }
     
     public override func layoutSubviews() {
         super.layoutSubviews()
-        
-        let minValue = min(self.bounds.size.width, self.bounds.size.height) / 2.0
-        self.radius = minValue - max(0.0, self.borderWidth)
-        
+        self.calculateRadius(self.bounds.size)
     }
     
     public override func drawRect(rect: CGRect) {
         let size = self.bounds.size
         let context = UIGraphicsGetCurrentContext()
         
-        self.drawRadial(context!, size: size)
+        let angle: CGFloat = CGFloat(2.0 * M_PI) / CGFloat(sectors)
+        
+        var bezierPath: UIBezierPath?
+        let center = CGPoint(x: size.width / 2, y: size.height / 2)
+        
+        for i in 0...self.sectors {
+            let inserve = -i
+            let startAngle = CGFloat(inserve) * angle
+            let endAngle = CGFloat(inserve + 1) * angle
+            bezierPath = UIBezierPath(arcCenter: center, radius: self.radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
+            
+            bezierPath?.addLineToPoint(center)
+            bezierPath?.closePath()
+            
+            let hue = CGFloat(Double(i) / Double(self.sectors))
+            let color = UIColor(hue: hue, saturation: 1, brightness: 1, alpha: 1)
+            color.setFill()
+            color.setStroke()
+            
+            bezierPath?.fill()
+            bezierPath?.stroke()
+        }
+
         
         let transparent = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.000)
         
@@ -92,20 +126,8 @@ public class ColorWheel : UIView, ColorCircular {
         return sqrt(distanceX + distanceY)
     }
     
-    func drawRadialImage() {
-//        if let imageView = self.colorImageView {
-//            imageView.removeFromSuperview()
-//            self.colorImageView = nil
-//        }
-//        UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
-        
-        /*
-        Insert drawRect code here
-        */
-
-//        let image = UIGraphicsGetImageFromCurrentImageContext()
-//        self.colorImageView = UIImageView(image: image)
-//        self.addSubview(self.colorImageView!)
+    private func setupColorWheelView() {
+        self.backgroundColor = UIColor.clearColor()
     }
     
 }
