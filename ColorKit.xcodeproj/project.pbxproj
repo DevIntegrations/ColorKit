@@ -11,6 +11,11 @@
 		1A79FE581C1B9D53001A5E34 /* ColorKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A79FE4D1C1B9D53001A5E34 /* ColorKit.framework */; };
 		1A79FE5D1C1B9D53001A5E34 /* ColorKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A79FE5C1C1B9D53001A5E34 /* ColorKitTests.swift */; };
 		1A79FE681C1B9DC4001A5E34 /* ColorWheel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A79FE671C1B9DC4001A5E34 /* ColorWheel.swift */; };
+		1AC1FB4D1C1D759B0040DA6A /* ColorBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC1FB4C1C1D759B0040DA6A /* ColorBar.swift */; };
+		1AC1FB4F1C1D763E0040DA6A /* ColorDonut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC1FB4E1C1D763E0040DA6A /* ColorDonut.swift */; };
+		1AC1FB511C1D79080040DA6A /* ColorWheelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC1FB501C1D79080040DA6A /* ColorWheelTests.swift */; };
+		1AC1FB531C1D79150040DA6A /* ColorDonutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC1FB521C1D79150040DA6A /* ColorDonutTests.swift */; };
+		1AC1FB551C1D79210040DA6A /* ColorBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC1FB541C1D79210040DA6A /* ColorBarTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +36,11 @@
 		1A79FE5C1C1B9D53001A5E34 /* ColorKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorKitTests.swift; sourceTree = "<group>"; };
 		1A79FE5E1C1B9D53001A5E34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A79FE671C1B9DC4001A5E34 /* ColorWheel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorWheel.swift; sourceTree = "<group>"; };
+		1AC1FB4C1C1D759B0040DA6A /* ColorBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorBar.swift; sourceTree = "<group>"; };
+		1AC1FB4E1C1D763E0040DA6A /* ColorDonut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorDonut.swift; sourceTree = "<group>"; };
+		1AC1FB501C1D79080040DA6A /* ColorWheelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorWheelTests.swift; sourceTree = "<group>"; };
+		1AC1FB521C1D79150040DA6A /* ColorDonutTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorDonutTests.swift; sourceTree = "<group>"; };
+		1AC1FB541C1D79210040DA6A /* ColorBarTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorBarTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +86,8 @@
 				1A79FE501C1B9D53001A5E34 /* ColorKit.h */,
 				1A79FE521C1B9D53001A5E34 /* Info.plist */,
 				1A79FE671C1B9DC4001A5E34 /* ColorWheel.swift */,
+				1AC1FB4C1C1D759B0040DA6A /* ColorBar.swift */,
+				1AC1FB4E1C1D763E0040DA6A /* ColorDonut.swift */,
 			);
 			path = ColorKit;
 			sourceTree = "<group>";
@@ -85,6 +97,9 @@
 			children = (
 				1A79FE5C1C1B9D53001A5E34 /* ColorKitTests.swift */,
 				1A79FE5E1C1B9D53001A5E34 /* Info.plist */,
+				1AC1FB501C1D79080040DA6A /* ColorWheelTests.swift */,
+				1AC1FB521C1D79150040DA6A /* ColorDonutTests.swift */,
+				1AC1FB541C1D79210040DA6A /* ColorBarTests.swift */,
 			);
 			path = ColorKitTests;
 			sourceTree = "<group>";
@@ -198,6 +213,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A79FE681C1B9DC4001A5E34 /* ColorWheel.swift in Sources */,
+				1AC1FB4D1C1D759B0040DA6A /* ColorBar.swift in Sources */,
+				1AC1FB4F1C1D763E0040DA6A /* ColorDonut.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,7 +222,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AC1FB531C1D79150040DA6A /* ColorDonutTests.swift in Sources */,
+				1AC1FB551C1D79210040DA6A /* ColorBarTests.swift in Sources */,
 				1A79FE5D1C1B9D53001A5E34 /* ColorKitTests.swift in Sources */,
+				1AC1FB511C1D79080040DA6A /* ColorWheelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,6 +403,7 @@
 				1A79FE631C1B9D53001A5E34 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1A79FE641C1B9D53001A5E34 /* Build configuration list for PBXNativeTarget "ColorKitTests" */ = {
 			isa = XCConfigurationList;
@@ -391,6 +412,7 @@
 				1A79FE661C1B9D53001A5E34 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -6,8 +6,8 @@
 //  Copyright © 2015 Interactive Relativity LLC. All rights reserved.
 //
 
-import Cocoa
+import UIKit
 
 class ColorBar: UIView {
-
+    
 }
