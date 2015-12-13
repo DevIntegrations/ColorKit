@@ -9,31 +9,16 @@
 import Foundation
 import UIKit
 
-public struct ColorWheelPixel {
+protocol ColorCircular {
+    var sectors: Int { get set }
+    var radius: CGFloat { get set }
     
+    func drawRadial(context: CGContextRef, size: CGSize)
 }
 
-@IBDesignable
-public class ColorWheel : UIView {
-    let borderWidth: CGFloat = 2.0
-    var sectors = 360
-    var radius: CGFloat = 0
-    
-    var colorImageView: UIImageView?
-    
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        let minValue = min(self.bounds.size.width, self.bounds.size.height) / 2.0
-        self.radius = minValue - max(0.0, self.borderWidth)
-        
-//        self.bounds = CGRect(x: 0, y: 0, width: minValue, height: minValue)
-//        self.drawRadialImage()
-    }
-    
-    public override func drawRect(rect: CGRect) {
-        let size = self.bounds.size
-        let context = UIGraphicsGetCurrentContext()
+
+extension ColorCircular {
+    func drawRadial(context: CGContextRef, size: CGSize) {
         UIColor.whiteColor().setFill()
         
         UIRectFill(CGRect(x: 0, y: 0, width: size.width, height: size.height))
@@ -59,12 +44,35 @@ public class ColorWheel : UIView {
             bezierPath?.fill()
             bezierPath?.stroke()
         }
+    }
+}
+
+
+
+@IBDesignable
+public class ColorWheel : UIView, ColorCircular {
+    let borderWidth: CGFloat = 2.0
+    public var sectors = 360
+    public var radius: CGFloat = 0
+    
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        let minValue = min(self.bounds.size.width, self.bounds.size.height) / 2.0
+        self.radius = minValue - max(0.0, self.borderWidth)
+        
+    }
+    
+    public override func drawRect(rect: CGRect) {
+        let size = self.bounds.size
+        let context = UIGraphicsGetCurrentContext()
+        
+        self.drawRadial(context!, size: size)
         
         let transparent = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.000)
         
         let gradient = CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), [UIColor.whiteColor().CGColor, transparent.CGColor], [0, 1])!
         
-        //        let image = UIGraphicsGetImageFromCurrentImageContext()
         let gradientOvalPath = UIBezierPath(ovalInRect: CGRectMake(0, 0, size.width, size.height))
         CGContextSaveGState(context)
         gradientOvalPath.addClip()
@@ -85,16 +93,17 @@ public class ColorWheel : UIView {
     }
     
     func drawRadialImage() {
-        if let imageView = self.colorImageView {
-            imageView.removeFromSuperview()
-            self.colorImageView = nil
-        }
+//        if let imageView = self.colorImageView {
+//            imageView.removeFromSuperview()
+//            self.colorImageView = nil
+//        }
 //        UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
         
         /*
         Insert drawRect code here
         */
-        
+
+//        let image = UIGraphicsGetImageFromCurrentImageContext()
 //        self.colorImageView = UIImageView(image: image)
 //        self.addSubview(self.colorImageView!)
     }
