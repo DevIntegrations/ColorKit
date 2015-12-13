@@ -33,20 +33,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UXi-KH-AI0" customClass="ColorDonut" customModule="ColorKit">
-                                <rect key="frame" x="84" y="266" width="145" height="145"/>
-                                <animations/>
-                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="radius">
-                                        <real key="value" value="90"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8qK-Vl-HZ4" customClass="ColorWheel" customModule="ColorKit">
                                 <rect key="frame" x="84" y="83" width="145" height="145"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.40361705801104975" green="0.39107154772110586" blue="0.38884532451261683" alpha="0.0" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UXi-KH-AI0" customClass="ColorDonut" customModule="ColorKit">
+                                <rect key="frame" x="84" y="266" width="145" height="145"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nl0-w6-Jcv" customClass="ColorBar" customModule="ColorKit">
+                                <rect key="frame" x="20" y="459" width="346" height="31"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <animations/>
